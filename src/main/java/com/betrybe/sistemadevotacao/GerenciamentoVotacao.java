@@ -45,9 +45,7 @@ public class GerenciamentoVotacao implements GerenciamentoVotacaoInterface {
       System.out.println("Pessoa eleitora já votou!");
     } else {
       for (PessoaCandidata candidato : pessoasCandidatas) {
-        System.out.println("chegou");
         if (candidato.getNumero() == numeroPessoaCandidata) {
-          System.out.println("chegou no if");
           candidato.receberVoto();
           this.cpfsComputados.add(cpfPessoaEleitora);
         }
