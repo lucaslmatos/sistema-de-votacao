@@ -28,7 +28,7 @@ public class GerenciamentoVotacao implements GerenciamentoVotacaoInterface {
   public void cadastrarPessoaEleitora(String nome, String cpf) {
     boolean existe = true;
     for (PessoaEleitora eleitor : pessoasEleitoras) {
-      if (cpf == eleitor.getCpf()) {
+      if (eleitor.getCpf().equals(cpf)) {
         System.out.println("Pessoa eleitora já cadastrada!");
         existe = false;
       }
@@ -45,7 +45,9 @@ public class GerenciamentoVotacao implements GerenciamentoVotacaoInterface {
       System.out.println("Pessoa eleitora já votou!");
     } else {
       for (PessoaCandidata candidato : pessoasCandidatas) {
+        System.out.println("chegou");
         if (candidato.getNumero() == numeroPessoaCandidata) {
+          System.out.println("chegou no if");
           candidato.receberVoto();
           this.cpfsComputados.add(cpfPessoaEleitora);
         }
@@ -55,14 +57,14 @@ public class GerenciamentoVotacao implements GerenciamentoVotacaoInterface {
 
   @Override
   public void mostrarResultado() {
-    if (this.cpfsComputados.size() == 0) {
+    if (cpfsComputados.size() == 0) {
       System.out.println("É preciso ter pelo menos um voto para mostrar o resultado.");
     } else {
       for (PessoaCandidata candidato : pessoasCandidatas) {
         String canNm = candidato.getNome();
         int canVts = candidato.getVotos();
         int totVts = this.cpfsComputados.size();
-        int pct = Math.round((canVts / totVts) * 100);
+        double pct = ((double) canVts / totVts) * 100;
         System.out.println("Nome: " + canNm + " - " + canVts + " votos ( " + pct + "% )");
       }
       System.out.println("Total de votos: " + this.cpfsComputados.size());

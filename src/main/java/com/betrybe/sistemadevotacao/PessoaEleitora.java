@@ -4,7 +4,7 @@ public class PessoaEleitora extends Pessoa {
   private String cpf;
 
   /**
-     * Construtor da classe PessoaCandidata.
+     * Construtor da classe PessoaCEleitora.
      *
      * @param novoNome O nome da pessoa eletiroa.
      * @param novoCpf  O código de pessoa fisica da pessoa eleitora.
